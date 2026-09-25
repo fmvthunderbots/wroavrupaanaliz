@@ -528,6 +528,62 @@
       color: var(--text);
     }
 
+    /* Category Color Badges */
+    .cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .cat-robomission {
+      background: rgba(2, 132, 199, 0.1);
+      color: #0284c7;
+      border: 1px solid rgba(2, 132, 199, 0.3);
+    }
+    [data-theme="dark"] .cat-robomission {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .cat-innovators {
+      background: rgba(124, 58, 237, 0.1);
+      color: #7c3aed;
+      border: 1px solid rgba(124, 58, 237, 0.3);
+    }
+    [data-theme="dark"] .cat-innovators {
+      background: rgba(167, 139, 250, 0.15);
+      color: #c084fc;
+      border-color: rgba(167, 139, 250, 0.35);
+    }
+
+    .cat-robosports {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    [data-theme="dark"] .cat-robosports {
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+      border-color: rgba(52, 211, 153, 0.35);
+    }
+
+    .cat-engineers {
+      background: rgba(225, 29, 72, 0.1);
+      color: #e11d48;
+      border: 1px solid rgba(225, 29, 72, 0.3);
+    }
+    [data-theme="dark"] .cat-engineers {
+      background: rgba(251, 113, 133, 0.15);
+      color: #fb7185;
+      border-color: rgba(251, 113, 133, 0.35);
+    }
+
     .empty-state {
       padding: 3rem 1.5rem;
       text-align: center;
@@ -636,11 +692,11 @@
     <!-- Control Panel / Filters -->
     <div class="control-panel">
       <div>
-        <div class="filter-group-title">🎯 Kategori Seçimi (Odaklanmak İstediğiniz Kategoriyi Seçin)</div>
+        <div class="filter-group-title">🎯 Kategori Seçimi</div>
         <div class="filter-pills" id="catPills">
-          <button class="filter-btn active" data-cat="all">Tüm Kategoriler</button>
-          <button class="filter-btn" data-cat="RoboMission (Regular)">RoboMission (Regular)</button>
-          <button class="filter-btn" data-cat="Future Innovators (Open)">Future Innovators (Open)</button>
+          <button class="filter-btn" data-cat="all">Tüm Kategoriler</button>
+          <button class="filter-btn active" data-cat="RoboMission">RoboMission</button>
+          <button class="filter-btn" data-cat="Future Innovators">Future Innovators</button>
           <button class="filter-btn" data-cat="RoboSports">RoboSports</button>
           <button class="filter-btn" data-cat="Future Engineers">Future Engineers</button>
         </div>
@@ -723,44 +779,60 @@
   <script>
     const data = [
       // 2019
-      { year: "2019", event: "Aarhus 2019", cat: "RoboMission (Regular)", age: "Junior", team: "Magnetech Inıtıum", rank: 6, totalCategoryTeams: 32, score: "305.00", medal: "Top 6", medalType: "gold" },
-      { year: "2019", event: "Aarhus 2019", cat: "RoboMission (Regular)", age: "Senior", team: "Robistim", rank: 9, totalCategoryTeams: 26, score: "200.00", medal: "Top 10", medalType: "silver" },
-      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators (Open)", age: "Junior", team: "Robokod SKAL", rank: 5, totalCategoryTeams: 9, score: "131.67", medal: "Top 5", medalType: "gold" },
-      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators (Open)", age: "Senior", team: "ROBOTED", rank: 4, totalCategoryTeams: 6, score: "144.67", medal: "Top 5", medalType: "gold" },
+      { year: "2019", event: "Aarhus 2019", cat: "RoboMission", age: "Junior", team: "Magnetech Inıtıum", rank: 6, totalCategoryTeams: 32, score: "305.00", medal: "Top 6", medalType: "gold" },
+      { year: "2019", event: "Aarhus 2019", cat: "RoboMission", age: "Senior", team: "Robistim", rank: 9, totalCategoryTeams: 26, score: "200.00", medal: "Top 10", medalType: "silver" },
+      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators", age: "Junior", team: "Robokod SKAL", rank: 5, totalCategoryTeams: 9, score: "131.67", medal: "Top 5", medalType: "gold" },
+      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators", age: "Senior", team: "ROBOTED", rank: 4, totalCategoryTeams: 6, score: "144.67", medal: "Top 5", medalType: "gold" },
 
       // 2023
-      { year: "2023", event: "Odense 2023", cat: "RoboMission (Regular)", age: "Elementary", team: "ROBALANYA", rank: 14, totalCategoryTeams: 55, score: "138.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2023", event: "Odense 2023", cat: "RoboMission (Regular)", age: "Junior", team: "ROBARMY1", rank: 19, totalCategoryTeams: 49, score: "148.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2023", event: "Odense 2023", cat: "Future Innovators (Open)", age: "Elementary", team: "MLS JUNIOR", rank: 8, totalCategoryTeams: 10, score: "127.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2023", event: "Odense 2023", cat: "Future Innovators (Open)", age: "Senior", team: "GODZILLAROBOTICS", rank: 10, totalCategoryTeams: 10, score: "120.25", medal: "Bronz", medalType: "bronze" },
+      { year: "2023", event: "Odense 2023", cat: "RoboMission", age: "Elementary", team: "ROBALANYA", rank: 14, totalCategoryTeams: 55, score: "138.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2023", event: "Odense 2023", cat: "RoboMission", age: "Junior", team: "ROBARMY1", rank: 19, totalCategoryTeams: 49, score: "148.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2023", event: "Odense 2023", cat: "Future Innovators", age: "Elementary", team: "MLS JUNIOR", rank: 8, totalCategoryTeams: 10, score: "127.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2023", event: "Odense 2023", cat: "Future Innovators", age: "Senior", team: "GODZILLAROBOTICS", rank: 10, totalCategoryTeams: 10, score: "120.25", medal: "Bronz", medalType: "bronze" },
 
       // 2024
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Elementary", team: "TAKEV RSPORT JR.", rank: 11, totalCategoryTeams: 52, score: "155.00", medal: "Altın", medalType: "gold" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Junior", team: "SIRIUS A", rank: 8, totalCategoryTeams: 57, score: "210.00", medal: "Altın", medalType: "gold" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Junior", team: "JUNIOR ALTAŞ", rank: 16, totalCategoryTeams: 57, score: "161.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Senior", team: "ÇAKATECH", rank: 7, totalCategoryTeams: 41, score: "143.00", medal: "Altın", medalType: "gold" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Senior", team: "SENİOR ALTAŞ", rank: 14, totalCategoryTeams: 41, score: "116.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2024", event: "Brescia 2024", cat: "Future Innovators (Open)", age: "Elementary", team: "EXFAVILLA", rank: 16, totalCategoryTeams: 17, score: "142.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2024", event: "Brescia 2024", cat: "Future Innovators (Open)", age: "Junior", team: "WINDBENDERS", rank: 4, totalCategoryTeams: 12, score: "129.50", medal: "Gümüş", medalType: "silver", special: "Creative Presentation Award" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Elementary", team: "TAKEV RSPORT JR.", rank: 11, totalCategoryTeams: 52, score: "155.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Junior", team: "SIRIUS A", rank: 8, totalCategoryTeams: 57, score: "210.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Junior", team: "JUNIOR ALTAŞ", rank: 16, totalCategoryTeams: 57, score: "161.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Senior", team: "ÇAKATECH", rank: 7, totalCategoryTeams: 41, score: "143.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Senior", team: "SENİOR ALTAŞ", rank: 14, totalCategoryTeams: 41, score: "116.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2024", event: "Brescia 2024", cat: "Future Innovators", age: "Elementary", team: "EXFAVILLA", rank: 16, totalCategoryTeams: 17, score: "142.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2024", event: "Brescia 2024", cat: "Future Innovators", age: "Junior", team: "WINDBENDERS", rank: 4, totalCategoryTeams: 12, score: "129.50", medal: "Gümüş", medalType: "silver", special: "Creative Presentation Award" },
 
       // 2025
-      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Elementary", team: "DRAGONROBOTİCS", rank: 13, totalCategoryTeams: 31, score: "155.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Elementary", team: "WALLBOTS", rank: 28, totalCategoryTeams: 31, score: "68.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Junior", team: "SPICA", rank: 17, totalCategoryTeams: 40, score: "200.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Junior", team: "ROBOTRİO", rank: 36, totalCategoryTeams: 40, score: "108.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Senior", team: "PHOENIX", rank: 5, totalCategoryTeams: 29, score: "277.00", medal: "Altın", medalType: "gold" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Senior", team: "ÇAKATECH", rank: 21, totalCategoryTeams: 29, score: "126.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "Future Innovators (Open)", age: "Elementary", team: "ROBİSTİM JR", rank: 5, totalCategoryTeams: 6, score: "113.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "Future Innovators (Open)", age: "Junior", team: "MEGA LEGO STARS", rank: 9, totalCategoryTeams: 13, score: "144.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "Future Innovators (Open)", age: "Senior", team: "ROBOKOD ICONS", rank: 4, totalCategoryTeams: 18, score: "156.00", medal: "Altın", medalType: "gold" }
+      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Elementary", team: "DRAGONROBOTİCS", rank: 13, totalCategoryTeams: 31, score: "155.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Elementary", team: "WALLBOTS", rank: 28, totalCategoryTeams: 31, score: "68.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Junior", team: "SPICA", rank: 17, totalCategoryTeams: 40, score: "200.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Junior", team: "ROBOTRİO", rank: 36, totalCategoryTeams: 40, score: "108.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Senior", team: "PHOENIX", rank: 5, totalCategoryTeams: 29, score: "277.00", medal: "Altın", medalType: "gold" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Senior", team: "ÇAKATECH", rank: 21, totalCategoryTeams: 29, score: "126.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "Future Innovators", age: "Elementary", team: "ROBİSTİM JR", rank: 5, totalCategoryTeams: 6, score: "113.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "Future Innovators", age: "Junior", team: "MEGA LEGO STARS", rank: 9, totalCategoryTeams: 13, score: "144.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "Future Innovators", age: "Senior", team: "ROBOKOD ICONS", rank: 4, totalCategoryTeams: 18, score: "156.00", medal: "Altın", medalType: "gold" }
     ];
 
     // State
-    let currentCat = 'all';
+    let currentCat = 'RoboMission';
     let currentYear = 'all';
     let currentAge = 'all';
     let searchQuery = '';
     let currentTab = 'highlights';
+
+    function getCatBadgeHtml(catName) {
+      if (catName.includes('RoboMission')) {
+        return `<span class="cat-badge cat-robomission">${catName}</span>`;
+      }
+      if (catName.includes('Future Innovators')) {
+        return `<span class="cat-badge cat-innovators">${catName}</span>`;
+      }
+      if (catName.includes('RoboSports')) {
+        return `<span class="cat-badge cat-robosports">${catName}</span>`;
+      }
+      if (catName.includes('Future Engineers')) {
+        return `<span class="cat-badge cat-engineers">${catName}</span>`;
+      }
+      return `<span class="cat-badge">${catName}</span>`;
+    }
 
     // Theme toggle
     const themeToggleBtn = document.getElementById('themeToggle');
@@ -851,12 +923,13 @@
 
             <div class="best-team-box" style="margin-top: 0.9rem;">
               <div class="best-team-name">${bestItem.team}</div>
+              <div style="margin-top: 0.35rem; margin-bottom: 0.55rem;">
+                ${getCatBadgeHtml(bestItem.cat)}
+              </div>
               <div class="best-team-meta">
                 <span class="rank-pill">Sıra: #${bestItem.rank} / ${bestItem.totalCategoryTeams} Takım</span>
                 <span>•</span>
                 <span>${bestItem.event}</span>
-                <span>•</span>
-                <span>${bestItem.cat}</span>
               </div>
               ${bestItem.special ? `<div class="team-special" style="margin-top: 0.4rem;">★ ${bestItem.special}</div>` : ''}
               <div style="margin-top: 0.6rem; display: flex; justify-content: space-between; align-items: center;">
@@ -903,7 +976,7 @@
 
         tr.innerHTML = `
           <td><span class="tag">${row.event}</span></td>
-          <td><strong>${row.cat}</strong></td>
+          <td>${getCatBadgeHtml(row.cat)}</td>
           <td><span class="tag">${row.age}</span></td>
           <td>
             <div class="team-cell">
@@ -938,7 +1011,7 @@
       const yearCounts = years.map(y => ({ year: y, count: filtered.filter(d => d.year === y).length }));
 
       // Categories distribution
-      const cats = ['RoboMission (Regular)', 'Future Innovators (Open)', 'RoboSports', 'Future Engineers'];
+      const cats = ['RoboMission', 'Future Innovators', 'RoboSports', 'Future Engineers'];
       const catCounts = cats.map(c => ({ cat: c, count: filtered.filter(d => d.cat === c).length }));
 
       // Medal distribution
