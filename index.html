@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRO Avrupa Açık Şampiyonaları — Türkiye Performans Analizi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --card-hover: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-glow: rgba(2, 132, 199, 0.12);
+      --primary-text: #0369a1;
+      --gold: #d97706;
+      --gold-bg: #fffbeeb0;
+      --gold-border: #fcd34d;
+      --gold-glow: rgba(245, 158, 11, 0.15);
+      --silver: #475569;
+      --silver-bg: #f1f5f9;
+      --silver-border: #cbd5e1;
+      --silver-glow: rgba(148, 163, 184, 0.15);
+      --bronze: #b45309;
+      --bronze-bg: #fff7ed;
+      --bronze-border: #fdba74;
+      --bronze-glow: rgba(217, 119, 6, 0.15);
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 14px;
+      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b0f19;
+      --card-bg: #151c2c;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.18);
+      --primary-text: #38bdf8;
+      --gold: #fbbf24;
+      --gold-bg: rgba(245, 158, 11, 0.12);
+      --gold-border: rgba(245, 158, 11, 0.3);
+      --silver: #cbd5e1;
+      --silver-bg: rgba(148, 163, 184, 0.12);
+      --silver-border: rgba(148, 163, 184, 0.3);
+      --bronze: #fdba74;
+      --bronze-bg: rgba(217, 119, 6, 0.12);
+      --bronze-border: rgba(217, 119, 6, 0.3);
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Top Navigation Header */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary-text);
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 720px;
+    }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--card-hover);
+    }
+
+    /* KPI Summary Row */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1.2rem 1.25rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3.5px;
+      background: var(--kpi-color, var(--primary));
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .kpi-value {
+      font-size: 1.9rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      margin-top: 0.3rem;
+      color: var(--text);
+    }
+
+    .kpi-subtext {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Control Panel: Filters & Category Selector */
+    .control-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .filter-group-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+
+    .filter-btn:hover {
+      background: var(--card-hover);
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    [data-theme="dark"] .filter-btn.active {
+      color: #04121d;
+    }
+
+    .secondary-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--card-border);
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 220px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.55rem 1rem 0.55rem 2.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+      font-family: var(--font-sans);
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Tab Controls (Alta doğru inmeden gezinme) */
+    .view-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--card-border);
+      padding-bottom: 0.25rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -0.25rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--primary-text);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Category Highlights / Subcategory Best Rank Cards */
+    .highlights-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .highlight-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .highlight-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .age-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .best-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: var(--gold-bg);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      text-transform: uppercase;
+    }
+
+    .best-team-box {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      padding: 0.9rem;
+      border-radius: 10px;
+    }
+
+    .best-team-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .best-team-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      align-items: center;
+    }
+
+    .rank-pill {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #ffffff;
+      background: var(--primary);
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    /* General Table Styling */
+    .table-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      padding: 0.9rem 1.1rem;
+      background: var(--bg);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 0.95rem 1.1rem;
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.88rem;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: var(--card-hover);
+    }
+
+    .rank-cell {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+    }
+
+    .team-cell {
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-special {
+      font-size: 0.72rem;
+      color: #0284c7;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+    }
+
+    .medal-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .medal-gold {
+      background: var(--gold-bg);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+    }
+
+    .medal-silver {
+      background: var(--silver-bg);
+      color: var(--silver);
+      border: 1px solid var(--silver-border);
+    }
+
+    .medal-bronze {
+      background: var(--bronze-bg);
+      color: var(--bronze);
+      border: 1px solid var(--bronze-border);
+    }
+
+    .medal-none {
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    .score-cell {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .empty-state {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Stats Overview Tab */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--bg);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.25rem;
+      border: 1px solid var(--card-border);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+      .top-bar {
+        flex-direction: column;
+      }
+      .table-wrapper {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="top-bar">
+      <div class="header-content">
+        <div class="badge">WRO AVRUPA ANALİZİ</div>
+        <h1>Türkiye Performans Analizi</h1>
+        <p class="subtitle">Aarhus 2019, Odense 2023, Brescia 2024 ve Avrupa 2025 Şampiyona Sonuçları ve Kategori/Yaş Grubu Kırılımları</p>
+      </div>
+      <button class="theme-toggle-btn" id="themeToggle">
+        <span id="themeIcon">☀️</span> <span id="themeText">Açık Tema</span>
+      </button>
+    </div>
+
+    <!-- KPI Summary Row -->
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--kpi-color: var(--primary);">
+        <div class="kpi-label">Toplam Katılım</div>
+        <div class="kpi-value" id="kpiTotal">0</div>
+        <div class="kpi-subtext">Filtrelenen kayıt sayısı</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color: #f59e0b;">
+        <div class="kpi-label">Altın / Top 5</div>
+        <div class="kpi-value" id="kpiGold">0</div>
+        <div class="kpi-subtext">Derece veya Zirve Başarısı</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color: #64748b;">
+        <div class="kpi-label">Gümüş Grubu</div>
+        <div class="kpi-value" id="kpiSilver">0</div>
+        <div class="kpi-subtext">Gümüş Sertifika / Başarı</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color: #d97706;">
+        <div class="kpi-label">Bronz Grubu</div>
+        <div class="kpi-value" id="kpiBronze">0</div>
+        <div class="kpi-subtext">Bronz Sertifika / Başarı</div>
+      </div>
+    </div>
+
+    <!-- Control Panel / Filters -->
+    <div class="control-panel">
+      <div>
+        <div class="filter-group-title">🎯 Kategori Seçimi (Odaklanmak İstediğiniz Kategoriyi Seçin)</div>
+        <div class="filter-pills" id="catPills">
+          <button class="filter-btn active" data-cat="all">Tüm Kategoriler</button>
+          <button class="filter-btn" data-cat="RoboMission (Regular)">RoboMission (Regular)</button>
+          <button class="filter-btn" data-cat="Future Innovators (Open)">Future Innovators (Open)</button>
+          <button class="filter-btn" data-cat="RoboSports">RoboSports</button>
+          <button class="filter-btn" data-cat="Future Engineers">Future Engineers</button>
+        </div>
+      </div>
+
+      <div class="secondary-filters">
+        <div>
+          <div class="filter-group-title">📅 Turnuva Yılı</div>
+          <div class="filter-pills" id="yearPills">
+            <button class="filter-btn active" data-year="all">Tüm Yıllar</button>
+            <button class="filter-btn" data-year="2019">2019 Aarhus</button>
+            <button class="filter-btn" data-year="2023">2023 Odense</button>
+            <button class="filter-btn" data-year="2024">2024 Brescia</button>
+            <button class="filter-btn" data-year="2025">2025 Europe</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="filter-group-title">👥 Yaş Grubu</div>
+          <div class="filter-pills" id="agePills">
+            <button class="filter-btn active" data-age="all">Tüm Yaşlar</button>
+            <button class="filter-btn" data-age="Elementary">Elementary</button>
+            <button class="filter-btn" data-age="Junior">Junior</button>
+            <button class="filter-btn" data-age="Senior">Senior</button>
+            <button class="filter-btn" data-age="Open">Open</button>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Takım adı ile hızlı ara...">
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation View Tabs -->
+    <div class="view-tabs">
+      <button class="tab-btn active" data-tab="highlights">
+        <span>🌟</span> En İyi Dereceler & Alt Başlıklar
+      </button>
+      <button class="tab-btn" data-tab="table">
+        <span>📋</span> Detaylı Sonuç Tablosu
+      </button>
+      <button class="tab-btn" data-tab="stats">
+        <span>📊</span> Dağılım & Özet Grafikler
+      </button>
+    </div>
+
+    <!-- TAB 1: Highlights & Category Breakdown -->
+    <div id="tab-highlights-content">
+      <div class="highlights-section" id="highlightsGrid"></div>
+    </div>
+
+    <!-- TAB 2: Table View -->
+    <div id="tab-table-content" style="display: none;">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Etkinlik</th>
+              <th>Kategori</th>
+              <th>Yaş Grubu</th>
+              <th>Takım</th>
+              <th>Sıra</th>
+              <th>Skor</th>
+              <th>Ödül / Sertifika</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: Stats Overview -->
+    <div id="tab-stats-content" style="display: none;">
+      <div class="stats-grid" id="statsGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    const data = [
+      // 2019
+      { year: "2019", event: "Aarhus 2019", cat: "RoboMission (Regular)", age: "Junior", team: "Magnetech Inıtıum", rank: 6, score: "305.00", medal: "Top 6", medalType: "gold" },
+      { year: "2019", event: "Aarhus 2019", cat: "RoboMission (Regular)", age: "Senior", team: "Robistim", rank: 9, score: "200.00", medal: "Top 10", medalType: "silver" },
+      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators (Open)", age: "Junior", team: "Robokod SKAL", rank: 5, score: "131.67", medal: "Top 5", medalType: "gold" },
+      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators (Open)", age: "Senior", team: "ROBOTED", rank: 4, score: "144.67", medal: "Top 5", medalType: "gold" },
+
+      // 2023
+      { year: "2023", event: "Odense 2023", cat: "RoboMission (Regular)", age: "Elementary", team: "ROBALANYA", rank: 14, score: "138.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2023", event: "Odense 2023", cat: "RoboMission (Regular)", age: "Junior", team: "ROBARMY1", rank: 19, score: "148.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2023", event: "Odense 2023", cat: "Future Innovators (Open)", age: "Elementary", team: "MLS JUNIOR", rank: 8, score: "127.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2023", event: "Odense 2023", cat: "Future Innovators (Open)", age: "Senior", team: "GODZILLAROBOTICS", rank: 10, score: "120.25", medal: "Bronz", medalType: "bronze" },
+
+      // 2024
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Elementary", team: "TAKEV RSPORT JR.", rank: 11, score: "155.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Junior", team: "SIRIUS A", rank: 8, score: "210.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Junior", team: "JUNIOR ALTAŞ", rank: 16, score: "161.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Senior", team: "ÇAKATECH", rank: 7, score: "143.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "Brescia 2024", cat: "RoboMission (Regular)", age: "Senior", team: "SENİOR ALTAŞ", rank: 14, score: "116.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2024", event: "Brescia 2024", cat: "Future Innovators (Open)", age: "Elementary", team: "EXFAVILLA", rank: 16, score: "142.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2024", event: "Brescia 2024", cat: "Future Innovators (Open)", age: "Junior", team: "WINDBENDERS", rank: 4, score: "129.50", medal: "Gümüş", medalType: "silver", special: "Creative Presentation Award" },
+
+      // 2025
+      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Elementary", team: "DRAGONROBOTİCS", rank: 13, score: "155.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Elementary", team: "WALLBOTS", rank: 28, score: "68.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Junior", team: "SPICA", rank: 17, score: "200.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Junior", team: "ROBOTRİO", rank: 36, score: "108.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Senior", team: "PHOENIX", rank: 5, score: "277.00", medal: "Altın", medalType: "gold" },
+      { year: "2025", event: "Europe 2025", cat: "RoboMission (Regular)", age: "Senior", team: "ÇAKATECH", rank: 21, score: "126.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "Future Innovators (Open)", age: "Elementary", team: "ROBİSTİM JR", rank: 5, score: "113.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "Future Innovators (Open)", age: "Junior", team: "MEGA LEGO STARS", rank: 9, score: "144.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "Europe 2025", cat: "Future Innovators (Open)", age: "Senior", team: "ROBOKOD ICONS", rank: 4, score: "156.00", medal: "Altın", medalType: "gold" }
+    ];
+
+    // State
+    let currentCat = 'all';
+    let currentYear = 'all';
+    let currentAge = 'all';
+    let searchQuery = '';
+    let currentTab = 'highlights';
+
+    // Theme toggle
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Koyu Tema';
+        localStorage.setItem('wro_theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Açık Tema';
+        localStorage.setItem('wro_theme', 'light');
+      }
+    }
+
+    // Load initial theme (default light or saved)
+    const savedTheme = localStorage.getItem('wro_theme') || 'light';
+    setTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.hasAttribute('data-theme');
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // Filter Logic
+    function getFilteredData() {
+      return data.filter(d => {
+        const catMatch = currentCat === 'all' || d.cat === currentCat;
+        const yearMatch = currentYear === 'all' || d.year === currentYear;
+        const ageMatch = currentAge === 'all' || d.age === currentAge;
+        const searchMatch = !searchQuery || d.team.toLowerCase().includes(searchQuery.toLowerCase()) || d.event.toLowerCase().includes(searchQuery.toLowerCase());
+        return catMatch && yearMatch && ageMatch && searchMatch;
+      });
+    }
+
+    function updateKPIs(filtered) {
+      document.getElementById('kpiTotal').textContent = filtered.length;
+      document.getElementById('kpiGold').textContent = filtered.filter(d => d.medalType === 'gold').length;
+      document.getElementById('kpiSilver').textContent = filtered.filter(d => d.medalType === 'silver').length;
+      document.getElementById('kpiBronze').textContent = filtered.filter(d => d.medalType === 'bronze').length;
+    }
+
+    // Render Highlights Tab (Category & Age Sub-breakdown)
+    function renderHighlights(filtered) {
+      const grid = document.getElementById('highlightsGrid');
+      grid.innerHTML = '';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="highlight-card empty-state" style="grid-column: 1/-1;">Seçilen filtrelere uygun kayıt bulunamadı.</div>`;
+        return;
+      }
+
+      // Group filtered data by Age Group or Category depending on selection
+      const ageGroups = ['Elementary', 'Junior', 'Senior', 'Open'];
+      
+      ageGroups.forEach(age => {
+        const ageItems = filtered.filter(d => d.age === age);
+        if (ageItems.length === 0) return;
+
+        // Sort age items to find the best rank (preferring competitive ranked items over unranked participation)
+        const competitiveItems = ageItems.filter(d => d.medalType !== 'none' && d.score !== '-');
+        const sortedItems = competitiveItems.length > 0 
+          ? [...competitiveItems].sort((a, b) => a.rank - b.rank) 
+          : [...ageItems].sort((a, b) => a.rank - b.rank);
+        const bestItem = sortedItems[0];
+
+        const card = document.createElement('div');
+        card.className = 'highlight-card';
+
+        let medalHtml = `<span class="medal-tag medal-none">-</span>`;
+        if (bestItem.medalType === 'gold') medalHtml = `<span class="medal-tag medal-gold">★ ${bestItem.medal}</span>`;
+        if (bestItem.medalType === 'silver') medalHtml = `<span class="medal-tag medal-silver">● ${bestItem.medal}</span>`;
+        if (bestItem.medalType === 'bronze') medalHtml = `<span class="medal-tag medal-bronze">◆ ${bestItem.medal}</span>`;
+
+        card.innerHTML = `
+          <div>
+            <div class="highlight-card-header">
+              <div class="age-title">
+                <span>🏆</span> ${age} Yaş Grubu
+              </div>
+              <span class="best-badge">EN İYİ DERECE</span>
+            </div>
+
+            <div class="best-team-box" style="margin-top: 0.9rem;">
+              <div class="best-team-name">${bestItem.team}</div>
+              <div class="best-team-meta">
+                <span class="rank-pill">Sıra: #${bestItem.rank}</span>
+                <span>•</span>
+                <span>${bestItem.event}</span>
+                <span>•</span>
+                <span>${bestItem.cat}</span>
+              </div>
+              ${bestItem.special ? `<div class="team-special" style="margin-top: 0.4rem;">★ ${bestItem.special}</div>` : ''}
+              <div style="margin-top: 0.6rem; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Skor: <strong class="score-cell">${bestItem.score}</strong></span>
+                ${medalHtml}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.4rem;">
+              Kategorideki Diğer Katılımlar (${ageItems.length} Takım):
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              ${ageItems.map(item => `
+                <span class="tag" title="${item.event} - Sıra: ${item.rank}">
+                  ${item.team} (#${item.rank})
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Render Table View
+    function renderTable(filtered) {
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="empty-state">Aradığınız kriterlere uygun sonuç bulunamadı.</td></tr>`;
+        return;
+      }
+
+      filtered.forEach(row => {
+        const tr = document.createElement('tr');
+        
+        let medalBadge = `<span class="medal-tag medal-none">-</span>`;
+        if (row.medalType === 'gold') medalBadge = `<span class="medal-tag medal-gold">★ ${row.medal}</span>`;
+        if (row.medalType === 'silver') medalBadge = `<span class="medal-tag medal-silver">● ${row.medal}</span>`;
+        if (row.medalType === 'bronze') medalBadge = `<span class="medal-tag medal-bronze">◆ ${row.medal}</span>`;
+
+        tr.innerHTML = `
+          <td><span class="tag">${row.event}</span></td>
+          <td><strong>${row.cat}</strong></td>
+          <td><span class="tag">${row.age}</span></td>
+          <td>
+            <div class="team-cell">
+              ${row.team}
+              ${row.special ? `<span class="team-special">★ ${row.special}</span>` : ''}
+            </div>
+          </td>
+          <td><span class="rank-cell">${row.rank}</span></td>
+          <td class="score-cell">${row.score}</td>
+          <td>${medalBadge}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Render Stats View
+    function renderStats(filtered) {
+      const grid = document.getElementById('statsGrid');
+      grid.innerHTML = '';
+
+      const total = filtered.length || 1;
+      
+      // Years distribution
+      const years = ['2019', '2023', '2024', '2025'];
+      const yearCounts = years.map(y => ({ year: y, count: filtered.filter(d => d.year === y).length }));
+
+      // Categories distribution
+      const cats = ['RoboMission (Regular)', 'Future Innovators (Open)', 'RoboSports', 'Future Engineers'];
+      const catCounts = cats.map(c => ({ cat: c, count: filtered.filter(d => d.cat === c).length }));
+
+      // Medal distribution
+      const gold = filtered.filter(d => d.medalType === 'gold').length;
+      const silver = filtered.filter(d => d.medalType === 'silver').length;
+      const bronze = filtered.filter(d => d.medalType === 'bronze').length;
+      const none = filtered.filter(d => d.medalType === 'none').length;
+
+      grid.innerHTML = `
+        <div class="stat-box">
+          <div class="stat-title">📌 Turnuva Yıllarına Göre Katılım</div>
+          ${yearCounts.map(y => `
+            <div style="margin-bottom: 0.8rem;">
+              <div class="stat-item">
+                <span>${y.year} Şampiyonası</span>
+                <strong>${y.count} Takım</strong>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${(y.count / total) * 100}%;"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-title">🤖 Kategoriye Göre Dağılım</div>
+          ${catCounts.map(c => `
+            <div style="margin-bottom: 0.8rem;">
+              <div class="stat-item">
+                <span>${c.cat}</span>
+                <strong>${c.count} Takım</strong>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${(c.count / total) * 100}%;"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-title">🏅 Ödül & Sertifika Dağılımı</div>
+          <div class="stat-item"><span>Altın Grubu / Top 5</span><strong style="color: var(--gold);">${gold}</strong></div>
+          <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(gold/total)*100}%; background: var(--gold);"></div></div>
+          
+          <div class="stat-item"><span>Gümüş Grubu</span><strong style="color: var(--silver);">${silver}</strong></div>
+          <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(silver/total)*100}%; background: var(--silver);"></div></div>
+          
+          <div class="stat-item"><span>Bronz Grubu</span><strong style="color: var(--bronze);">${bronze}</strong></div>
+          <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(bronze/total)*100}%; background: var(--bronze);"></div></div>
+        </div>
+      `;
+    }
+
+    function renderAll() {
+      const filtered = getFilteredData();
+      updateKPIs(filtered);
+      renderHighlights(filtered);
+      renderTable(filtered);
+      renderStats(filtered);
+    }
+
+    // Filter Buttons Handlers
+    document.querySelectorAll('#catPills .filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('#catPills .filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentCat = e.target.dataset.cat;
+        renderAll();
+      });
+    });
+
+    document.querySelectorAll('#yearPills .filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('#yearPills .filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentYear = e.target.dataset.year;
+        renderAll();
+      });
+    });
+
+    document.querySelectorAll('#agePills .filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('#agePills .filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentAge = e.target.dataset.age;
+        renderAll();
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      renderAll();
+    });
+
+    // Tab Handlers
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetTab = e.currentTarget.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+
+        document.getElementById('tab-highlights-content').style.display = targetTab === 'highlights' ? 'block' : 'none';
+        document.getElementById('tab-table-content').style.display = targetTab === 'table' ? 'block' : 'none';
+        document.getElementById('tab-stats-content').style.display = targetTab === 'stats' ? 'block' : 'none';
+      });
+    });
+
+    // Initial Render
+    renderAll();
+  </script>
+</body>
+</html>
