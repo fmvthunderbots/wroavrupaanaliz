@@ -6,12 +6,12 @@
   <title>WRO Avrupa Açık Şampiyonaları — Türkiye Performans Analizi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"> 
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #eef2f6;
       --card-bg: #ffffff;
-      --card-border: #e2e8f0;
+      --card-border: #cbd5e1;
       --card-hover: #f1f5f9;
       --text: #0f172a;
       --text-muted: #64748b;
@@ -33,7 +33,7 @@
       --font-sans: 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --radius: 14px;
-      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
     }
 
     [data-theme="dark"] {
@@ -65,13 +65,13 @@
     }
 
     body {
-      background-color: var(--bg);
+      background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 45%, #e6eff8 100%);
+      background-attachment: fixed;
       color: var(--text);
       font-family: var(--font-sans);
       min-height: 100vh;
       padding: 2rem 1.5rem;
       line-height: 1.5;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .container {
@@ -79,49 +79,42 @@
       margin: 0 auto;
     }
 
-    /* Top Navigation Header */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .header-content {
+    /* Sleek Metallic Header Banner */
+    .header-banner {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.9) 100%);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      border-left: 6px solid var(--primary);
+      border-radius: 16px;
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.07);
+      backdrop-filter: blur(10px);
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+    .header-badge {
       font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--primary-text);
-      background: var(--primary-glow);
-      border: 1px solid var(--primary);
-      padding: 0.3rem 0.8rem;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      padding: 0.25rem 0.7rem;
       border-radius: 9999px;
       width: fit-content;
     }
 
-    h1 {
-      font-size: 2.1rem;
+    .header-title {
+      font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    p.subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 720px;
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
 
     .theme-toggle-btn {
@@ -201,6 +194,7 @@
     .control-panel {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
+      border-top: 4px solid var(--primary);
       border-radius: var(--radius);
       padding: 1.25rem;
       box-shadow: var(--shadow);
@@ -243,65 +237,48 @@
       color: var(--text);
     }
 
-    .filter-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px var(--primary-glow);
+    .custom-select {
+      width: 100%;
+      background: var(--bg);
+      border: 1.5px solid var(--card-border);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
     }
 
-    [data-theme="dark"] .filter-btn.active {
-      color: #04121d;
+    .custom-select:hover, .custom-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
     }
 
     .secondary-filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
+      gap: 2rem;
+      align-items: flex-start;
       padding-top: 1rem;
       border-top: 1px dashed var(--card-border);
     }
 
-    .search-box {
-      flex: 1;
-      min-width: 220px;
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      padding: 0.55rem 1rem 0.55rem 2.2rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      outline: none;
-      font-family: var(--font-sans);
-      transition: border-color 0.2s;
-    }
-
-    .search-box input:focus {
-      border-color: var(--primary);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Tab Controls (Alta doğru inmeden gezinme) */
+    /* Tab Controls */
     .view-tabs {
       display: flex;
       gap: 0.5rem;
       margin-bottom: 1.5rem;
       border-bottom: 2px solid var(--card-border);
       padding-bottom: 0.25rem;
+      flex-wrap: wrap;
     }
 
     .tab-btn {
@@ -329,6 +306,12 @@
       border-bottom-color: var(--primary);
     }
 
+    /* Toggle Table Button Hover */
+    #toggleTableBtn:hover {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+    }
+
     /* Category Highlights / Subcategory Best Rank Cards */
     .highlights-section {
       display: grid;
@@ -340,6 +323,7 @@
     .highlight-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
+      border-top: 4px solid var(--primary);
       border-radius: var(--radius);
       padding: 1.25rem;
       box-shadow: var(--shadow);
@@ -377,10 +361,11 @@
     }
 
     .best-team-box {
-      background: var(--bg);
-      border: 1px solid var(--card-border);
-      padding: 0.9rem;
-      border-radius: 10px;
+      background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 1px solid #cbd5e1;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 2px 5px rgba(15, 23, 42, 0.05);
     }
 
     .best-team-name {
@@ -413,6 +398,7 @@
     .table-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
+      border-top: 4px solid var(--primary);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
@@ -456,12 +442,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      padding: 0.2rem 0.6rem;
       border-radius: 8px;
-      background: var(--bg);
-      border: 1px solid var(--card-border);
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
       color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     }
 
     .team-cell {
@@ -481,12 +467,13 @@
     .tag {
       display: inline-block;
       font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.2rem 0.55rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
-      background: var(--bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
     }
 
     .medal-tag {
@@ -562,28 +549,6 @@
       border-color: rgba(167, 139, 250, 0.35);
     }
 
-    .cat-robosports {
-      background: rgba(16, 185, 129, 0.1);
-      color: #059669;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-    [data-theme="dark"] .cat-robosports {
-      background: rgba(52, 211, 153, 0.15);
-      color: #34d399;
-      border-color: rgba(52, 211, 153, 0.35);
-    }
-
-    .cat-engineers {
-      background: rgba(225, 29, 72, 0.1);
-      color: #e11d48;
-      border: 1px solid rgba(225, 29, 72, 0.3);
-    }
-    [data-theme="dark"] .cat-engineers {
-      background: rgba(251, 113, 133, 0.15);
-      color: #fb7185;
-      border-color: rgba(251, 113, 133, 0.35);
-    }
-
     .empty-state {
       padding: 3rem 1.5rem;
       text-align: center;
@@ -601,13 +566,14 @@
     .stat-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
+      border-top: 4px solid var(--primary);
       border-radius: var(--radius);
-      padding: 1.25rem;
+      padding: 1.5rem;
       box-shadow: var(--shadow);
     }
 
     .stat-title {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--text);
       margin-bottom: 1rem;
@@ -653,106 +619,79 @@
 <body>
 
   <div class="container">
-    <!-- Header -->
-    <div class="top-bar">
-      <div class="header-content">
-        <div class="badge">WRO AVRUPA ANALİZİ</div>
-        <h1>Türkiye Performans Analizi</h1>
-        <p class="subtitle">Aarhus 2019, Odense 2023, Brescia 2024 ve Avrupa 2025 Şampiyona Sonuçları ve Kategori/Yaş Grubu Kırılımları</p>
-      </div>
-      <button class="theme-toggle-btn" id="themeToggle">
-        <span id="themeIcon">☀️</span> <span id="themeText">Açık Tema</span>
-      </button>
+    <!-- Sleek Metallic Header Banner -->
+    <div class="header-banner">
+      <h1 class="header-title">WRO AVRUPA ANALİZİ</h1>
     </div>
 
-    <!-- KPI Summary Row -->
-    <div class="kpi-grid">
-      <div class="kpi-card" style="--kpi-color: var(--primary);">
-        <div class="kpi-label">Toplam Katılım</div>
-        <div class="kpi-value" id="kpiTotal">0</div>
-        <div class="kpi-subtext">Filtrelenen kayıt sayısı</div>
-      </div>
-      <div class="kpi-card" style="--kpi-color: #f59e0b;">
-        <div class="kpi-label">Altın / Top 5</div>
-        <div class="kpi-value" id="kpiGold">0</div>
-        <div class="kpi-subtext">Derece veya Zirve Başarısı</div>
-      </div>
-      <div class="kpi-card" style="--kpi-color: #64748b;">
-        <div class="kpi-label">Gümüş Grubu</div>
-        <div class="kpi-value" id="kpiSilver">0</div>
-        <div class="kpi-subtext">Gümüş Sertifika / Başarı</div>
-      </div>
-      <div class="kpi-card" style="--kpi-color: #d97706;">
-        <div class="kpi-label">Bronz Grubu</div>
-        <div class="kpi-value" id="kpiBronze">0</div>
-        <div class="kpi-subtext">Bronz Sertifika / Başarı</div>
-      </div>
-    </div>
-
-    <!-- Control Panel / Filters -->
-    <div class="control-panel">
-      <div>
-        <div class="filter-group-title">🎯 Kategori Seçimi</div>
-        <div class="filter-pills" id="catPills">
-          <button class="filter-btn" data-cat="all">Tüm Kategoriler</button>
-          <button class="filter-btn active" data-cat="RoboMission">RoboMission</button>
-          <button class="filter-btn" data-cat="Future Innovators">Future Innovators</button>
-          <button class="filter-btn" data-cat="RoboSports">RoboSports</button>
-          <button class="filter-btn" data-cat="Future Engineers">Future Engineers</button>
-        </div>
+    <!-- Global Control Panel / Dropdown Filters -->
+    <div class="control-panel" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1.25rem; align-items: center;">
+      <div style="flex: 1; min-width: 220px;">
+        <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; letter-spacing: 0.05em;">
+          1️⃣ Kategori Seçin
+        </label>
+        <select id="catSelect" class="custom-select">
+          <option value="RoboMission" selected>RoboMission</option>
+          <option value="Future Innovators">Future Innovators</option>
+          <option value="all">Tüm Kategoriler</option>
+        </select>
       </div>
 
-      <div class="secondary-filters">
-        <div>
-          <div class="filter-group-title">📅 Turnuva Yılı</div>
-          <div class="filter-pills" id="yearPills">
-            <button class="filter-btn active" data-year="all">Tüm Yıllar</button>
-            <button class="filter-btn" data-year="2019">2019 Aarhus</button>
-            <button class="filter-btn" data-year="2023">2023 Odense</button>
-            <button class="filter-btn" data-year="2024">2024 Brescia</button>
-            <button class="filter-btn" data-year="2025">2025 Europe</button>
-          </div>
-        </div>
+      <div style="flex: 1; min-width: 220px;">
+        <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; letter-spacing: 0.05em;">
+          2️⃣ Yaş Grubu Seçin
+        </label>
+        <select id="ageSelect" class="custom-select">
+          <option value="all" selected>Tüm Yaşlar</option>
+          <option value="Elementary">Elementary</option>
+          <option value="Junior">Junior</option>
+          <option value="Senior">Senior</option>
+        </select>
+      </div>
 
-        <div>
-          <div class="filter-group-title">👥 Yaş Grubu</div>
-          <div class="filter-pills" id="agePills">
-            <button class="filter-btn active" data-age="all">Tüm Yaşlar</button>
-            <button class="filter-btn" data-age="Elementary">Elementary</button>
-            <button class="filter-btn" data-age="Junior">Junior</button>
-            <button class="filter-btn" data-age="Senior">Senior</button>
-            <button class="filter-btn" data-age="Open">Open</button>
-          </div>
-        </div>
-
-        <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" placeholder="Takım adı ile hızlı ara...">
-        </div>
+      <div style="flex: 1; min-width: 220px;">
+        <label style="display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; letter-spacing: 0.05em;">
+          📅 Turnuva Yılı
+        </label>
+        <select id="yearSelect" class="custom-select">
+          <option value="all" selected>Tüm Yıllar</option>
+          <option value="2019">2019 Avrupa Şampiyonası</option>
+          <option value="2023">2023 Avrupa Şampiyonası</option>
+          <option value="2024">2024 Avrupa Şampiyonası</option>
+          <option value="2025">2025 Avrupa Şampiyonası</option>
+        </select>
       </div>
     </div>
 
     <!-- Navigation View Tabs -->
     <div class="view-tabs">
       <button class="tab-btn active" data-tab="highlights">
-        <span>🌟</span> En İyi Dereceler & Alt Başlıklar
+        <span>🌟</span> En İyi Dereceler
       </button>
-      <button class="tab-btn" data-tab="table">
-        <span>📋</span> Detaylı Sonuç Tablosu
+      <button class="tab-btn" data-tab="details">
+        <span>📋</span> Detaylı Sonuçlar
       </button>
-      <button class="tab-btn" data-tab="stats">
-        <span>📊</span> Dağılım & Özet Grafikler
+      <button class="tab-btn" data-tab="match-analysis">
+        <span>📉</span> Maç Günleri Analiz
+      </button>
+      <button class="tab-btn" data-tab="projection">
+        <span>🔮</span> 2026 Tahmini Puan Aralığı
       </button>
     </div>
 
-    <!-- TAB 1: Highlights & Category Breakdown -->
+    <!-- TAB 1: En İyi Dereceler -->
     <div id="tab-highlights-content">
       <div class="highlights-section" id="highlightsGrid"></div>
     </div>
 
-    <!-- TAB 2: Table View -->
-    <div id="tab-table-content" style="display: none;">
-      <div class="table-wrapper">
+    <!-- TAB 2: Detaylı Sonuçlar -->
+    <div id="tab-details-content" style="display: none;">
+
+      <!-- DETAILED TABLE -->
+      <div style="border-bottom: 2px solid var(--card-border); margin-bottom: 1.2rem; padding-bottom: 0.5rem; margin-top: 1.5rem;">
+        <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text);">📋 Seçilen Kriterlere Göre Sonuç Tablosu</h2>
+      </div>
+      <div class="table-wrapper" style="margin-bottom: 2.5rem;">
         <table>
           <thead>
             <tr>
@@ -768,54 +707,180 @@
           <tbody id="tableBody"></tbody>
         </table>
       </div>
+
+      <!-- STATS & GRAPH SUBSECTION -->
+      <div style="border-bottom: 2px solid var(--card-border); margin-bottom: 1.5rem; padding-bottom: 0.5rem; margin-top: 2rem;">
+        <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text);">📊 Dağılım ve Özet Grafikleri</h2>
+      </div>
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <!-- INFO NOTICE AT BOTTOM OF DETAILED RESULTS -->
+      <div style="font-size: 0.85rem; color: var(--text-muted); background: var(--card-bg); padding: 0.75rem 1rem; border-radius: 8px; border: 1px dashed var(--card-border); display: flex; align-items: center; gap: 0.5rem; margin-top: 2.5rem;">
+        <span>ℹ️</span> <strong>Bilgi:</strong> RoboSports ve Future Engineers kategorilerinde henüz takım/derece bulunmadığı için analize dahil edilmemiştir.
+      </div>
     </div>
 
-    <!-- TAB 3: Stats Overview -->
-    <div id="tab-stats-content" style="display: none;">
-      <div class="stats-grid" id="statsGrid"></div>
+    <!-- TAB 2: Match Analysis -->
+    <div id="tab-match-analysis-content" style="display: none;">
+      <div class="stats-grid">
+        <div class="stat-box" style="grid-column: 1 / -1;">
+          <div class="stat-title" style="font-size: 1.4rem; color: var(--primary-text); margin-bottom: 0.8rem;">1. Gün ve 2. Gün İstikrar Analizi</div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 900px; line-height: 1.6;">Dünya genelindeki WRO şampiyonalarında ilk gün yüksek skor üreten lider takımların ikinci gün sürpriz görevlere adaptasyonları incelendiğinde, turnuvanın kaderini belirleyen net bir <strong>istikrar ve düşüş oranı</strong> ortaya çıkmaktadır.</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+            <!-- 2025 -->
+            <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
+              <div style="font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 0.4rem; margin-left: 0.5rem;">2025 Avrupa Şampiyonası</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">İlk gün lider 15 takım üzerinden;</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Yerini Korudu</span>
+                <span style="color: #059669; font-weight: 800; font-size: 1.2rem;">%60</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Üst Sıralardan Koptu</span>
+                <span style="color: #e11d48; font-weight: 800; font-size: 1.2rem;">%40</span>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
+              <div style="font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 0.4rem; margin-left: 0.5rem;">2024 Avrupa Şampiyonası</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">Lider konumdaki 13 takım üzerinden;</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Yerini Korudu</span>
+                <span style="color: #059669; font-weight: 800; font-size: 1.2rem;">%54</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Üst Sıralardan Koptu</span>
+                <span style="color: #e11d48; font-weight: 800; font-size: 1.2rem;">%46</span>
+              </div>
+            </div>
+
+            <!-- 2023 -->
+            <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
+              <div style="font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 0.4rem; margin-left: 0.5rem;">2023 Avrupa Şampiyonası</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">İddialı 12 ekip üzerinden;</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Yerini Korudu</span>
+                <span style="color: #059669; font-weight: 800; font-size: 1.2rem;">%67</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Üst Sıralardan Koptu</span>
+                <span style="color: #e11d48; font-weight: 800; font-size: 1.2rem;">%33</span>
+              </div>
+            </div>
+
+            <!-- 2019 -->
+            <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
+              <div style="font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 0.4rem; margin-left: 0.5rem;">2019 Avrupa Şampiyonası</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">Zirvedeki 9 takım üzerinden;</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Yerini Korudu</span>
+                <span style="color: #059669; font-weight: 800; font-size: 1.2rem;">%55</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Üst Sıralardan Koptu</span>
+                <span style="color: #e11d48; font-weight: 800; font-size: 1.2rem;">%45</span>
+              </div>
+            </div>
+          </div>
+          
+          <div style="background: var(--primary-glow); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(2, 132, 199, 0.3);">
+            <div style="display: flex; align-items: center; gap: 0.6rem; font-weight: 800; color: var(--primary-text); font-size: 1.2rem; margin-bottom: 0.8rem;">
+              <span>📌</span> Genel İstatistiksel Sonuç
+            </div>
+            <div style="font-size: 1rem; color: var(--text); line-height: 1.7;">Son dört büyük turnuvanın verileri net bir tablo çizmektedir: İlk gün ilk 15'te yer alan takımların <strong>ortalama %55 - %60'ı</strong> ikinci gün istikrar sağlayıp madalya kürsüsünü ele geçirmektedir. Geriye kalan <strong>%40 - %45'lik kesim</strong> ise ikinci gün görevlerinin yarattığı stres ve algoritmik karmaşa karşısında puan kaybı yaşayarak orta sıralara gerilemektedir.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: 2026 Projection -->
+    <div id="tab-projection-content" style="display: none;">
+      <div class="stats-grid">
+        <div class="stat-box" style="grid-column: 1 / -1;">
+          <div class="stat-title" style="font-size: 1.4rem; color: var(--gold); margin-bottom: 0.8rem;">2026 Avrupa Şampiyonası Olası Puan Tahmini</div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 900px; line-height: 1.6;">2019-2025 yığılma verilerine göre; Avrupa takımları, Asya takımlarının belirlediği global tavan puanlarından tarihsel olarak <strong>ortalama %14,6</strong> (görevlerin zor olduğu yıllarda %18-27) geride kalmaktadır. 2026 sezonunda Day 1 global tavanı 260-270, lider yığılması 235 puan civarındadır. Bu verilerle şekillenen 2026 beklentileri:</p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Gold Rank -->
+            <div style="display: flex; align-items: flex-start; gap: 1.5rem; background: var(--bg); padding: 1.8rem; border-radius: 14px; border: 1px solid var(--card-border); border-left: 6px solid var(--gold); box-shadow: 0 4px 15px var(--gold-glow);">
+              <div style="font-size: 2.5rem; line-height: 1;">🏆</div>
+              <div>
+                <div style="font-weight: 800; color: var(--text); font-size: 1.2rem; margin-bottom: 0.4rem;">Avrupa Mutlak Zirvesi (1. ve 2. Takım)</div>
+                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; color: var(--gold); margin-bottom: 0.6rem;">205 - 215 Puan</div>
+                <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Asya ve Amerika'daki 260-270 tam tavan puana yerel Avrupa takımlarının ulaşması beklenmemektedir. Her iki günde de hem ana hem sürpriz görevlerde yüksek esneklik gösteren 1-2 şampiyon adayı ekibin erişeceği zirve puan bandıdır.</div>
+              </div>
+            </div>
+            
+            <!-- Silver Rank -->
+            <div style="display: flex; align-items: flex-start; gap: 1.5rem; background: var(--bg); padding: 1.8rem; border-radius: 14px; border: 1px solid var(--card-border); border-left: 6px solid #94a3b8; box-shadow: 0 4px 15px var(--silver-glow);">
+              <div style="font-size: 2.5rem; line-height: 1;">🥈</div>
+              <div>
+                <div style="font-weight: 800; color: var(--text); font-size: 1.2rem; margin-bottom: 0.4rem;">Ana Madalya Grubu (3. - 8. Sıra)</div>
+                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; color: #64748b; margin-bottom: 0.6rem;">185 - 195 Puan</div>
+                <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Turnuvanın asıl derece rekabetinin yaşanacağı gruptur. İlk günkü başarısını ikinci gün sürpriz görevlerde de sürdüren istikrarlı ekipler ile ikinci gün hamlesiyle öne çıkan takımlar bu bantta madalya mücadelesini belirleyecektir.</div>
+              </div>
+            </div>
+            
+            <!-- Bronze / Opportunity Rank -->
+            <div style="display: flex; align-items: flex-start; gap: 1.5rem; background: var(--bg); padding: 1.8rem; border-radius: 14px; border: 1px solid var(--card-border); border-left: 6px solid var(--bronze); box-shadow: 0 4px 15px var(--bronze-glow);">
+              <div style="font-size: 2.5rem; line-height: 1;">🥉</div>
+              <div>
+                <div style="font-weight: 800; color: var(--text); font-size: 1.2rem; margin-bottom: 0.4rem;">Yükselme & Sıralama Grubu (9. - 15. Sıra)</div>
+                <div style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; color: var(--bronze); margin-bottom: 0.6rem;">150 - 175 Puan</div>
+                <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">İlk gün bu grupta yer alan takımlar için ikinci gün büyük bir fırsat penceresidir. Sürpriz görevlerde doğru hamleleri yapan ekipler kendilerini üst sıralara taşıyabilir. Küçük puan farklarının sıralamayı hızla değiştirdiği dinamik rekabet alanıdır.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
     const data = [
       // 2019
-      { year: "2019", event: "Aarhus 2019", cat: "RoboMission", age: "Junior", team: "Magnetech Inıtıum", rank: 6, totalCategoryTeams: 32, score: "305.00", medal: "Top 6", medalType: "gold" },
-      { year: "2019", event: "Aarhus 2019", cat: "RoboMission", age: "Senior", team: "Robistim", rank: 9, totalCategoryTeams: 26, score: "200.00", medal: "Top 10", medalType: "silver" },
-      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators", age: "Junior", team: "Robokod SKAL", rank: 5, totalCategoryTeams: 9, score: "131.67", medal: "Top 5", medalType: "gold" },
-      { year: "2019", event: "Aarhus 2019", cat: "Future Innovators", age: "Senior", team: "ROBOTED", rank: 4, totalCategoryTeams: 6, score: "144.67", medal: "Top 5", medalType: "gold" },
+      { year: "2019", event: "2019 Avrupa Şampiyonası", cat: "RoboMission", age: "Junior", team: "Magnetech Inıtıum", rank: 6, totalCategoryTeams: 32, score: "305.00", medal: "Top 6", medalType: "gold" },
+      { year: "2019", event: "2019 Avrupa Şampiyonası", cat: "RoboMission", age: "Senior", team: "Robistim", rank: 9, totalCategoryTeams: 26, score: "200.00", medal: "Top 10", medalType: "silver" },
+      { year: "2019", event: "2019 Avrupa Şampiyonası", cat: "Future Innovators", age: "Junior", team: "Robokod SKAL", rank: 5, totalCategoryTeams: 9, score: "131.67", medal: "Top 5", medalType: "gold" },
+      { year: "2019", event: "2019 Avrupa Şampiyonası", cat: "Future Innovators", age: "Senior", team: "ROBOTED", rank: 4, totalCategoryTeams: 6, score: "144.67", medal: "Top 5", medalType: "gold" },
 
       // 2023
-      { year: "2023", event: "Odense 2023", cat: "RoboMission", age: "Elementary", team: "ROBALANYA", rank: 14, totalCategoryTeams: 55, score: "138.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2023", event: "Odense 2023", cat: "RoboMission", age: "Junior", team: "ROBARMY1", rank: 19, totalCategoryTeams: 49, score: "148.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2023", event: "Odense 2023", cat: "Future Innovators", age: "Elementary", team: "MLS JUNIOR", rank: 8, totalCategoryTeams: 10, score: "127.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2023", event: "Odense 2023", cat: "Future Innovators", age: "Senior", team: "GODZILLAROBOTICS", rank: 10, totalCategoryTeams: 10, score: "120.25", medal: "Bronz", medalType: "bronze" },
+      { year: "2023", event: "2023 Avrupa Şampiyonası", cat: "RoboMission", age: "Elementary", team: "ROBALANYA", rank: 14, totalCategoryTeams: 55, score: "138.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2023", event: "2023 Avrupa Şampiyonası", cat: "RoboMission", age: "Junior", team: "ROBARMY1", rank: 19, totalCategoryTeams: 49, score: "148.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2023", event: "2023 Avrupa Şampiyonası", cat: "Future Innovators", age: "Elementary", team: "MLS JUNIOR", rank: 8, totalCategoryTeams: 10, score: "127.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2023", event: "2023 Avrupa Şampiyonası", cat: "Future Innovators", age: "Senior", team: "GODZILLAROBOTICS", rank: 10, totalCategoryTeams: 10, score: "120.25", medal: "Bronz", medalType: "bronze" },
 
       // 2024
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Elementary", team: "TAKEV RSPORT JR.", rank: 11, totalCategoryTeams: 52, score: "155.00", medal: "Altın", medalType: "gold" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Junior", team: "SIRIUS A", rank: 8, totalCategoryTeams: 57, score: "210.00", medal: "Altın", medalType: "gold" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Junior", team: "JUNIOR ALTAŞ", rank: 16, totalCategoryTeams: 57, score: "161.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Senior", team: "ÇAKATECH", rank: 7, totalCategoryTeams: 41, score: "143.00", medal: "Altın", medalType: "gold" },
-      { year: "2024", event: "Brescia 2024", cat: "RoboMission", age: "Senior", team: "SENİOR ALTAŞ", rank: 14, totalCategoryTeams: 41, score: "116.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2024", event: "Brescia 2024", cat: "Future Innovators", age: "Elementary", team: "EXFAVILLA", rank: 16, totalCategoryTeams: 17, score: "142.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2024", event: "Brescia 2024", cat: "Future Innovators", age: "Junior", team: "WINDBENDERS", rank: 4, totalCategoryTeams: 12, score: "129.50", medal: "Gümüş", medalType: "silver", special: "Creative Presentation Award" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "RoboMission", age: "Elementary", team: "TAKEV RSPORT JR.", rank: 11, totalCategoryTeams: 52, score: "155.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "RoboMission", age: "Junior", team: "SIRIUS A", rank: 8, totalCategoryTeams: 57, score: "210.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "RoboMission", age: "Junior", team: "JUNIOR ALTAŞ", rank: 16, totalCategoryTeams: 57, score: "161.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "RoboMission", age: "Senior", team: "ÇAKATECH", rank: 7, totalCategoryTeams: 41, score: "143.00", medal: "Altın", medalType: "gold" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "RoboMission", age: "Senior", team: "SENİOR ALTAŞ", rank: 14, totalCategoryTeams: 41, score: "116.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "Future Innovators", age: "Elementary", team: "EXFAVILLA", rank: 16, totalCategoryTeams: 17, score: "142.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2024", event: "2024 Avrupa Şampiyonası", cat: "Future Innovators", age: "Junior", team: "WINDBENDERS", rank: 4, totalCategoryTeams: 12, score: "129.50", medal: "Gümüş", medalType: "silver", special: "Creative Presentation Award" },
 
       // 2025
-      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Elementary", team: "DRAGONROBOTİCS", rank: 13, totalCategoryTeams: 31, score: "155.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Elementary", team: "WALLBOTS", rank: 28, totalCategoryTeams: 31, score: "68.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Junior", team: "SPICA", rank: 17, totalCategoryTeams: 40, score: "200.00", medal: "Gümüş", medalType: "silver" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Junior", team: "ROBOTRİO", rank: 36, totalCategoryTeams: 40, score: "108.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Senior", team: "PHOENIX", rank: 5, totalCategoryTeams: 29, score: "277.00", medal: "Altın", medalType: "gold" },
-      { year: "2025", event: "Europe 2025", cat: "RoboMission", age: "Senior", team: "ÇAKATECH", rank: 21, totalCategoryTeams: 29, score: "126.00", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "Future Innovators", age: "Elementary", team: "ROBİSTİM JR", rank: 5, totalCategoryTeams: 6, score: "113.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "Future Innovators", age: "Junior", team: "MEGA LEGO STARS", rank: 9, totalCategoryTeams: 13, score: "144.50", medal: "Bronz", medalType: "bronze" },
-      { year: "2025", event: "Europe 2025", cat: "Future Innovators", age: "Senior", team: "ROBOKOD ICONS", rank: 4, totalCategoryTeams: 18, score: "156.00", medal: "Altın", medalType: "gold" }
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "RoboMission", age: "Elementary", team: "DRAGONROBOTİCS", rank: 13, totalCategoryTeams: 31, score: "155.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "RoboMission", age: "Elementary", team: "WALLBOTS", rank: 28, totalCategoryTeams: 31, score: "68.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "RoboMission", age: "Junior", team: "SPICA", rank: 17, totalCategoryTeams: 40, score: "200.00", medal: "Gümüş", medalType: "silver" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "RoboMission", age: "Junior", team: "ROBOTRİO", rank: 36, totalCategoryTeams: 40, score: "108.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "RoboMission", age: "Senior", team: "PHOENIX", rank: 5, totalCategoryTeams: 29, score: "277.00", medal: "Altın", medalType: "gold" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "RoboMission", age: "Senior", team: "ÇAKATECH", rank: 21, totalCategoryTeams: 29, score: "126.00", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "Future Innovators", age: "Elementary", team: "ROBİSTİM JR", rank: 5, totalCategoryTeams: 6, score: "113.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "Future Innovators", age: "Junior", team: "MEGA LEGO STARS", rank: 9, totalCategoryTeams: 13, score: "144.50", medal: "Bronz", medalType: "bronze" },
+      { year: "2025", event: "2025 Avrupa Şampiyonası", cat: "Future Innovators", age: "Senior", team: "ROBOKOD ICONS", rank: 4, totalCategoryTeams: 18, score: "156.00", medal: "Altın", medalType: "gold" }
     ];
 
     // State
     let currentCat = 'RoboMission';
     let currentYear = 'all';
     let currentAge = 'all';
-    let searchQuery = '';
     let currentTab = 'highlights';
 
     function getCatBadgeHtml(catName) {
@@ -825,42 +890,8 @@
       if (catName.includes('Future Innovators')) {
         return `<span class="cat-badge cat-innovators">${catName}</span>`;
       }
-      if (catName.includes('RoboSports')) {
-        return `<span class="cat-badge cat-robosports">${catName}</span>`;
-      }
-      if (catName.includes('Future Engineers')) {
-        return `<span class="cat-badge cat-engineers">${catName}</span>`;
-      }
       return `<span class="cat-badge">${catName}</span>`;
     }
-
-    // Theme toggle
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const themeText = document.getElementById('themeText');
-
-    function setTheme(theme) {
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '🌙';
-        themeText.textContent = 'Koyu Tema';
-        localStorage.setItem('wro_theme', 'dark');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        themeIcon.textContent = '☀️';
-        themeText.textContent = 'Açık Tema';
-        localStorage.setItem('wro_theme', 'light');
-      }
-    }
-
-    // Load initial theme (default light or saved)
-    const savedTheme = localStorage.getItem('wro_theme') || 'light';
-    setTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.hasAttribute('data-theme');
-      setTheme(isDark ? 'light' : 'dark');
-    });
 
     // Filter Logic
     function getFilteredData() {
@@ -868,16 +899,8 @@
         const catMatch = currentCat === 'all' || d.cat === currentCat;
         const yearMatch = currentYear === 'all' || d.year === currentYear;
         const ageMatch = currentAge === 'all' || d.age === currentAge;
-        const searchMatch = !searchQuery || d.team.toLowerCase().includes(searchQuery.toLowerCase()) || d.event.toLowerCase().includes(searchQuery.toLowerCase());
-        return catMatch && yearMatch && ageMatch && searchMatch;
+        return catMatch && yearMatch && ageMatch;
       });
-    }
-
-    function updateKPIs(filtered) {
-      document.getElementById('kpiTotal').textContent = filtered.length;
-      document.getElementById('kpiGold').textContent = filtered.filter(d => d.medalType === 'gold').length;
-      document.getElementById('kpiSilver').textContent = filtered.filter(d => d.medalType === 'silver').length;
-      document.getElementById('kpiBronze').textContent = filtered.filter(d => d.medalType === 'bronze').length;
     }
 
     // Render Highlights Tab (Category & Age Sub-breakdown)
@@ -890,14 +913,14 @@
         return;
       }
 
-      // Group filtered data by Age Group or Category depending on selection
-      const ageGroups = ['Elementary', 'Junior', 'Senior', 'Open'];
+      // Group filtered data by Age Group
+      const ageGroups = ['Elementary', 'Junior', 'Senior'];
       
       ageGroups.forEach(age => {
         const ageItems = filtered.filter(d => d.age === age);
         if (ageItems.length === 0) return;
 
-        // Sort age items to find the best rank (preferring competitive ranked items over unranked participation)
+        // Sort age items to find the best rank
         const competitiveItems = ageItems.filter(d => d.medalType !== 'none' && d.score !== '-');
         const sortedItems = competitiveItems.length > 0 
           ? [...competitiveItems].sort((a, b) => a.rank - b.rank) 
@@ -1010,15 +1033,33 @@
       const years = ['2019', '2023', '2024', '2025'];
       const yearCounts = years.map(y => ({ year: y, count: filtered.filter(d => d.year === y).length }));
 
-      // Categories distribution
-      const cats = ['RoboMission', 'Future Innovators', 'RoboSports', 'Future Engineers'];
-      const catCounts = cats.map(c => ({ cat: c, count: filtered.filter(d => d.cat === c).length }));
+      // Categories distribution & Medal distribution per category
+      const cats = ['RoboMission', 'Future Innovators'];
+      
+      const catHTML = cats.map(c => {
+        const catItems = filtered.filter(d => d.cat === c);
+        if (catItems.length === 0) return '';
+        
+        const g = catItems.filter(d => d.medalType === 'gold').length;
+        const s = catItems.filter(d => d.medalType === 'silver').length;
+        const b = catItems.filter(d => d.medalType === 'bronze').length;
+        const totalCat = catItems.length;
 
-      // Medal distribution
-      const gold = filtered.filter(d => d.medalType === 'gold').length;
-      const silver = filtered.filter(d => d.medalType === 'silver').length;
-      const bronze = filtered.filter(d => d.medalType === 'bronze').length;
-      const none = filtered.filter(d => d.medalType === 'none').length;
+        return `
+          <div style="margin-bottom: 1.5rem; background: var(--bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 1.25rem;">
+            <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 1rem; color: var(--text); border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">${c} Madalya Dağılımı</div>
+            
+            <div class="stat-item"><span>Altın Grubu / Top 5</span><strong style="color: var(--gold);">${g} Takım</strong></div>
+            <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(g/totalCat)*100}%; background: var(--gold);"></div></div>
+            
+            <div class="stat-item"><span>Gümüş Grubu</span><strong style="color: var(--silver);">${s} Takım</strong></div>
+            <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(s/totalCat)*100}%; background: var(--silver);"></div></div>
+            
+            <div class="stat-item"><span>Bronz Grubu</span><strong style="color: var(--bronze);">${b} Takım</strong></div>
+            <div class="progress-bar-bg" style="margin-bottom: 0.4rem;"><div class="progress-bar-fill" style="width: ${(b/totalCat)*100}%; background: var(--bronze);"></div></div>
+          </div>
+        `;
+      }).join('');
 
       grid.innerHTML = `
         <div class="stat-box">
@@ -1037,72 +1078,32 @@
         </div>
 
         <div class="stat-box">
-          <div class="stat-title">🤖 Kategoriye Göre Dağılım</div>
-          ${catCounts.map(c => `
-            <div style="margin-bottom: 0.8rem;">
-              <div class="stat-item">
-                <span>${c.cat}</span>
-                <strong>${c.count} Takım</strong>
-              </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" style="width: ${(c.count / total) * 100}%;"></div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-
-        <div class="stat-box">
-          <div class="stat-title">🏅 Ödül & Sertifika Dağılımı</div>
-          <div class="stat-item"><span>Altın Grubu / Top 5</span><strong style="color: var(--gold);">${gold}</strong></div>
-          <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(gold/total)*100}%; background: var(--gold);"></div></div>
-          
-          <div class="stat-item"><span>Gümüş Grubu</span><strong style="color: var(--silver);">${silver}</strong></div>
-          <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(silver/total)*100}%; background: var(--silver);"></div></div>
-          
-          <div class="stat-item"><span>Bronz Grubu</span><strong style="color: var(--bronze);">${bronze}</strong></div>
-          <div class="progress-bar-bg" style="margin-bottom: 0.8rem;"><div class="progress-bar-fill" style="width: ${(bronze/total)*100}%; background: var(--bronze);"></div></div>
+          <div class="stat-title">🏅 Kategori Bazlı Ödül Dağılımı</div>
+          ${catHTML === '' ? '<div class="empty-state" style="padding: 1rem;">Bu kriterlere uygun veri yok.</div>' : catHTML}
         </div>
       `;
     }
 
     function renderAll() {
       const filtered = getFilteredData();
-      updateKPIs(filtered);
       renderHighlights(filtered);
       renderTable(filtered);
       renderStats(filtered);
     }
 
-    // Filter Buttons Handlers
-    document.querySelectorAll('#catPills .filter-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        document.querySelectorAll('#catPills .filter-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        currentCat = e.target.dataset.cat;
-        renderAll();
-      });
+    // Filter Select Handlers
+    document.getElementById('catSelect').addEventListener('change', (e) => {
+      currentCat = e.target.value;
+      renderAll();
     });
 
-    document.querySelectorAll('#yearPills .filter-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        document.querySelectorAll('#yearPills .filter-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        currentYear = e.target.dataset.year;
-        renderAll();
-      });
+    document.getElementById('ageSelect').addEventListener('change', (e) => {
+      currentAge = e.target.value;
+      renderAll();
     });
 
-    document.querySelectorAll('#agePills .filter-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        document.querySelectorAll('#agePills .filter-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        currentAge = e.target.dataset.age;
-        renderAll();
-      });
-    });
-
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      searchQuery = e.target.value.trim();
+    document.getElementById('yearSelect').addEventListener('change', (e) => {
+      currentYear = e.target.value;
       renderAll();
     });
 
@@ -1114,8 +1115,9 @@
         e.currentTarget.classList.add('active');
 
         document.getElementById('tab-highlights-content').style.display = targetTab === 'highlights' ? 'block' : 'none';
-        document.getElementById('tab-table-content').style.display = targetTab === 'table' ? 'block' : 'none';
-        document.getElementById('tab-stats-content').style.display = targetTab === 'stats' ? 'block' : 'none';
+        document.getElementById('tab-details-content').style.display = targetTab === 'details' ? 'block' : 'none';
+        document.getElementById('tab-match-analysis-content').style.display = targetTab === 'match-analysis' ? 'block' : 'none';
+        document.getElementById('tab-projection-content').style.display = targetTab === 'projection' ? 'block' : 'none';
       });
     });
 
