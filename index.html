@@ -563,6 +563,19 @@
       gap: 1.25rem;
     }
 
+    .match-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 992px) {
+      .match-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+    }
+
     .stat-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -727,7 +740,22 @@
           <div class="stat-title" style="font-size: 1.4rem; color: var(--primary-text); margin-bottom: 0.8rem;">1. Gün ve 2. Gün İstikrar Analizi</div>
           <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 900px; line-height: 1.6;">Dünya genelindeki WRO şampiyonalarında ilk gün yüksek skor üreten lider takımların ikinci gün sürpriz görevlere adaptasyonları incelendiğinde, turnuvanın kaderini belirleyen net bir <strong>istikrar ve düşüş oranı</strong> ortaya çıkmaktadır.</p>
           
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+          <div class="match-cards-grid">
+            <!-- 2026 Asya Şampiyonası (FIRST) -->
+            <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
+              <div style="font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 0.4rem; margin-left: 0.5rem;">2026 Asya Şampiyonası</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">İlk 15 lider takım üzerinden;</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Yerini Korudu</span>
+                <span style="color: #059669; font-weight: 800; font-size: 1.2rem;">%67</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Üst Sıralardan Koptu</span>
+                <span style="color: #e11d48; font-weight: 800; font-size: 1.2rem;">%33</span>
+              </div>
+            </div>
+
             <!-- 2025 -->
             <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
               <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
@@ -747,7 +775,7 @@
             <div style="background: var(--bg); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--card-border); position: relative; overflow: hidden; box-shadow: var(--shadow);">
               <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #0ea5e9;"></div>
               <div style="font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 0.4rem; margin-left: 0.5rem;">2024 Avrupa Şampiyonası</div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">Lider konumdaki 13 takım üzerinden;</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem; margin-left: 0.5rem;">İlk gün lider 13 takım üzerinden;</div>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; margin-left: 0.5rem;">
                 <span style="font-size: 0.9rem; font-weight: 700; color: var(--text);">Yerini Korudu</span>
                 <span style="color: #059669; font-weight: 800; font-size: 1.2rem;">%54</span>
@@ -789,11 +817,11 @@
             </div>
           </div>
           
-          <div style="background: var(--primary-glow); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(2, 132, 199, 0.3);">
+          <div style="background: var(--primary-glow); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(2, 132, 199, 0.3); margin-top: 1.75rem; width: 100%;">
             <div style="display: flex; align-items: center; gap: 0.6rem; font-weight: 800; color: var(--primary-text); font-size: 1.2rem; margin-bottom: 0.8rem;">
               <span>📌</span> Genel İstatistiksel Sonuç
             </div>
-            <div style="font-size: 1rem; color: var(--text); line-height: 1.7;">Son dört büyük turnuvanın verileri net bir tablo çizmektedir: İlk gün ilk 15'te yer alan takımların <strong>ortalama %55 - %60'ı</strong> ikinci gün istikrar sağlayıp madalya kürsüsünü ele geçirmektedir. Geriye kalan <strong>%40 - %45'lik kesim</strong> ise ikinci gün görevlerinin yarattığı stres ve algoritmik karmaşa karşısında puan kaybı yaşayarak orta sıralara gerilemektedir.</div>
+            <div style="font-size: 1rem; color: var(--text); line-height: 1.7;">İncelenen turnuvaların ve 2026 verilerinin analizleri net bir tablo çizmektedir: İlk gün ilk 15'te yer alan takımların <strong>ortalama %55 - %67'si</strong> ikinci gün istikrar sağlayıp yerini korumakta veya yükselmektedir. Geriye kalan <strong>%33 - %45'lik kesim</strong> ise ikinci gün sürpriz görevlerin yarattığı karmaşa karşısında puan kaybı yaşayarak alt sıralara gerilemektedir.</div>
           </div>
         </div>
       </div>
